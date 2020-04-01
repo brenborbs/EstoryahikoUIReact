@@ -134,19 +134,19 @@ const Pagination = styled("div")`
 const BtnLoadless = styled("button")`
   margin-right: 1rem;
   padding: 5px;
-  color: white;
+  color: #2088af;
   font-size: 10px;
-  background-color: #20c2e3;
-  border-color: transparent;
+  background-color: #a7e3f6;
+  border-color: #6bcfef;
   border-radius: 5px;
 `;
 const BtnLoadmore = styled("button")`
   margin-right: 1rem;
   padding: 5px;
-  color: white;
+  color: #2088af;
   font-size: 10px;
-  background-color: var(--purple-haze);
-  border-color: transparent;
+  background-color: #a7e3f6;
+  border-color: #6bcfef;
   border-radius: 5px;
 `;
 
@@ -194,19 +194,20 @@ const Inside = styled("div")`
 `;
 const Button = styled("button")`
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  border-radius: 0.2rem;
-  color: var(--purple-haze);
-  border-color: var(--purple-haze);
+  font-size: 12px;
+  border-radius: 999px;
+  color: #6a51b2;
+  border-color: #6a51b2;
+  background-color: #ddd5f0;
   display: inline-block;
   font-weight: 400;
   text-align: center;
   vertical-align: middle;
+  text-transform: uppercase;
 
   :hover {
-    background-color: var(--purple-haze);
-    color: white;
+    background-color: #af9cda;
+    color: #6a51b2;
   }
 `;
 const Span = styled("span")`

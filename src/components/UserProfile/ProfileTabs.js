@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import DefaultProfile from "../../images/avatar.jpg";
 
+// Note: a tag used on post link for hard refresh after creating a post
+
 class ProfileTabs extends Component {
   render() {
     const { following, followers, posts } = this.props;
@@ -66,11 +68,11 @@ class ProfileTabs extends Component {
             {posts.map((post, i) => (
               <div key={i}>
                 <div>
-                  <Link to={`/post/${post._id}`}>
+                  <a href={`/post/${post._id}`}>
                     <div>
                       <p className="lead">{post.title}</p>
                     </div>
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))}

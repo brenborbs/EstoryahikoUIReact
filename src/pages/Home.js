@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import renderHTML from "react-render-html";
 import DefaultImage from "../images/milind-kaduskar-87655-unsplash.jpg";
 import styled from "@emotion/styled";
+import Search from "../components/Search";
 
 // Bug: Cannot get comments length
 
@@ -82,26 +83,49 @@ export default class Home extends Component {
     const { posts, page } = this.state;
 
     return (
-      <section id="home-posts">
-        {!posts.length ? <div id="loader"></div> : ""}
-        <div className="home-posts-wrapper">{this.renderPosts(posts)}</div>
-        <Pagination>
-          {page > 1 ? (
-            <BtnLoadless onClick={() => this.loadLess(1)}>
-              Previous ({this.state.page - 1})
-            </BtnLoadless>
+      <React.Fragment>
+        <Search />
+        <section id="home-posts">
+          {!posts.length ? (
+            <div id="loader" style={{ marginTop: "23rem" }}></div>
           ) : (
             ""
           )}
-          {posts.length ? (
-            <BtnLoadmore onClick={() => this.loadMore(1)}>
-              Next ({page + 1})
-            </BtnLoadmore>
-          ) : (
-            ""
-          )}
-        </Pagination>
-      </section>
+          <div className="home-posts-wrapper">{this.renderPosts(posts)}</div>
+          <Pagination>
+            <UlWrapper>
+              {page > 1 ? (
+                <>
+                  <li>
+                    <i className="fa fa-chevron-left" aria-hidden="true"></i>
+                  </li>
+                  <li>
+                    <BtnLoadless onClick={() => this.loadLess(1)}>
+                      Back({this.state.page - 1})
+                    </BtnLoadless>
+                  </li>
+                </>
+              ) : (
+                ""
+              )}
+              {posts.length ? (
+                <>
+                  <li>
+                    <BtnLoadmore onClick={() => this.loadMore(1)}>
+                      Next({page + 1})
+                    </BtnLoadmore>
+                  </li>
+                  <li>
+                    <i className="fa fa-chevron-right" aria-hidden="true"></i>
+                  </li>
+                </>
+              ) : (
+                ""
+              )}
+            </UlWrapper>
+          </Pagination>
+        </section>
+      </React.Fragment>
     );
   }
 }
@@ -137,24 +161,35 @@ const Footer = styled("div")`
   color: var(--grey-text);
 `;
 const Pagination = styled("div")`
-  margin: 2rem 0rem 1rem 5rem;
+  margin-top: 2rem;
+  text-align: center;
 `;
 
 const BtnLoadless = styled("button")`
-  margin-right: 1rem;
-  padding: 8px;
+  margin: 0 10px 0 10px;
+  padding: 6px;
   color: white;
-  font-size: 14px;
-  background-color: #20c2e3;
+  font-size: 12px;
+  background-color: #ff4081;
   border-color: transparent;
-  border-radius: 5px;
+  border-radius: 999px;
 `;
 const BtnLoadmore = styled("button")`
-  margin-right: 1rem;
-  padding: 8px;
+  margin: 0 10px 0 10px;
+  padding: 6px;
   color: white;
-  font-size: 14px;
-  background-color: var(--purple-haze);
+  font-size: 12px;
+  background-color: #ff4081;
   border-color: transparent;
-  border-radius: 5px;
+  border-radius: 999px;
+`;
+const UlWrapper = styled("ul")`
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  .fa {
+    color: var(--grey-text);
+  }
 `;

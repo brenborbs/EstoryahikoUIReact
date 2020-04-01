@@ -1,4 +1,5 @@
 import { API } from "../config";
+import queryString from "query-string";
 
 export const create = (userId, token, post) => {
   return fetch(`${API}/post/new/${userId}`, {
@@ -150,6 +151,40 @@ export const uncomment = (userId, token, postId, comment) => {
       Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({ userId, postId, comment })
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+export const listRelated = postId => {
+  return fetch(`${API}/posts/related/${postId}`, {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
+// export const searches = params => {
+//   const query = queryString.stringify(params);
+//   console.log("query", query);
+//   return fetch(`${API}/posts/search?${query}`, {
+//     method: "GET"
+//   })
+//     .then(response => {
+//       return response.json();
+//     })
+//     .catch(err => console.log(err));
+// };
+export const searches = params => {
+  console.log("search params", params);
+  let query = queryString.stringify(params); // value on search input at front-end
+  console.log("query params", query);
+  return fetch(`${API}/posts/search?${query}`, {
+    method: "GET"
   })
     .then(response => {
       return response.json();

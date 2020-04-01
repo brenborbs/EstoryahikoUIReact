@@ -162,7 +162,7 @@ export default class UserProfile extends Component {
 }
 
 const Wrapper = styled("div")`
-margin-top: 3rem;
+padding-top: 2rem;
 }
 `;
 const Banner = styled("div")`
@@ -178,14 +178,14 @@ const Column = styled("div")`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   text-shadow: 1px 1px 2px black;
-  min-height: 30vh;
+  min-height: 40vh;
 `;
 const ControlButtons = styled("div")`
   position: relative;
 `;
 const FollowButton = styled("div")`
   position: absolute;
-  top: 20px;
+  top: 40px;
   right: 20px;
 `;
 const Userpic = styled("img")`
@@ -200,7 +200,7 @@ const Userpic = styled("img")`
   height: 48px;
 `;
 const UserH1 = styled("h1")`
-  padding-top: 20px;
+  padding-top: 80px;
   font-weight: 600;
   font-size: 1.84524rem;
 `;

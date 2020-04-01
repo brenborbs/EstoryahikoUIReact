@@ -130,7 +130,7 @@ class Signup extends Component {
 export default Signup;
 
 const SignupWrapper = styled("div")`
-  margin-top: 6rem;
+  padding-top: 6rem;
 `;
 
 const MainText = styled("div")`

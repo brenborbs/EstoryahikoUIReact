@@ -27,7 +27,6 @@ const Checkbox = ({ categories, handleFilters }) => {
         type="checkbox"
         style={{ zoom: "1.5" }}
       />
-
       <span>{c.name}</span>
     </div>
   ));

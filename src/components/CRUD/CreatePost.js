@@ -186,33 +186,35 @@ class NewPost extends Component {
     }
 
     return (
-      <div className="right_dash">
-        <FormWrapper>
-          <h2 className="mt-5 mb-5">Create a new post</h2>
-          <div
-            className="alert-danger"
-            style={{ display: error ? "" : "none", marginTop: "10px" }}
-          >
-            <div className="alert-icon">
-              <i
-                className="fa fa-exclamation-circle"
-                aria-hidden="true"
-                style={{ color: "#f44336" }}
-              ></i>
+      <div className="form-wrapper">
+        <div className="right_dash">
+          <FormWrapper>
+            <h2 className="mt-5 mb-5">Create a new post</h2>
+            <div
+              className="alert-danger"
+              style={{ display: error ? "" : "none", marginTop: "10px" }}
+            >
+              <div className="alert-icon">
+                <i
+                  className="fa fa-exclamation-circle"
+                  aria-hidden="true"
+                  style={{ color: "#f44336" }}
+                ></i>
+              </div>
+              <div className="alert-message">{error}</div>
             </div>
-            <div className="alert-message">{error}</div>
-          </div>
 
-          {loading ? (
-            <div className="jumbotron text-center">
-              <h2>Loading...</h2>
-            </div>
-          ) : (
-            ""
-          )}
+            {loading ? (
+              <div className="jumbotron text-center">
+                <h2>Loading...</h2>
+              </div>
+            ) : (
+              ""
+            )}
 
-          {this.newPostForm(title, body, categories, loading)}
-        </FormWrapper>
+            {this.newPostForm(title, body, categories, loading)}
+          </FormWrapper>
+        </div>
       </div>
     );
   }
@@ -221,7 +223,6 @@ class NewPost extends Component {
 export default NewPost;
 
 const FormWrapper = styled("div")`
-  margin-top: 5rem;
   padding: 2rem;
   background-color: white;
 `;

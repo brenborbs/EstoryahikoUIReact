@@ -9,7 +9,7 @@ const SideDrawer = props => {
       onHideNav={props.onHideNav}
       navStyle={{
         background: "#fff",
-        maxWidth: "220px"
+        maxWidth: "200px"
       }}
     >
       <SidenavItems />

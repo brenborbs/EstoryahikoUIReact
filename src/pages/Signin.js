@@ -71,7 +71,7 @@ export default class Signin extends Component {
       return <Redirect to="/posts" />;
     }
     return (
-      <SigninWrapper>
+      <Wrapper>
         <LoginMainText>
           <h2>Login</h2>
           <p>Create a post for today and share.</p>
@@ -106,12 +106,12 @@ export default class Signin extends Component {
             </LoginLinks>
           </LoginFormContainer>
         </SigninContainer>
-      </SigninWrapper>
+      </Wrapper>
     );
   }
 }
-const SigninWrapper = styled("div")`
-  margin-top: 6rem;
+const Wrapper = styled("div")`
+  padding-top: 5rem;
 `;
 
 const LoginMainText = styled("div")`

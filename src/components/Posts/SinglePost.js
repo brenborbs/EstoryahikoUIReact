@@ -1,11 +1,19 @@
 import React, { Component } from "react";
-import { singlePost, remove, like, unlike } from "../../actions/PostActions";
+import {
+  singlePost,
+  remove,
+  like,
+  unlike,
+  listRelated
+} from "../../actions/PostActions";
 import DefaultPost from "../../images/milind-kaduskar-87655-unsplash.jpg";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../../actions/AuthActions";
 import renderHTML from "react-render-html";
 import Comment from "./Comment";
 import styled from "@emotion/styled";
+
+import Card from "../Posts/SmallCard";
 
 class SinglePost extends Component {
   state = {
@@ -14,7 +22,9 @@ class SinglePost extends Component {
     redirectToSignin: false,
     like: false,
     likes: 0,
-    comments: []
+    comments: [],
+    // Related posts
+    relatedPost: []
   };
 
   checkLike = likes => {
@@ -23,8 +33,8 @@ class SinglePost extends Component {
     return match;
   };
 
-  componentDidMount = () => {
-    const postId = this.props.match.params.postId;
+  loadSinglePost = postId => {
+    this.setState({ loading: true });
     singlePost(postId).then(data => {
       if (data.error) {
         console.log(data.error);
@@ -35,9 +45,37 @@ class SinglePost extends Component {
           like: this.checkLike(data.likes),
           comments: data.comments
         });
+        listRelated(data._id).then(data => {
+          if (data.error) {
+            console.log(data.error);
+          } else {
+            this.setState({ relatedPost: data });
+          }
+        });
       }
     });
   };
+
+  componentDidMount = () => {
+    const postId = this.props.match.params.postId;
+    this.loadSinglePost(postId);
+  };
+
+  // componentDidMount = () => {
+  //   const postId = this.props.match.params.postId;
+  //   singlePost(postId).then(data => {
+  //     if (data.error) {
+  //       console.log(data.error);
+  //     } else {
+  //       this.setState({
+  //         post: data,
+  //         likes: data.likes.length,
+  //         like: this.checkLike(data.likes),
+  //         comments: data.comments
+  //       });
+  //     }
+  //   });
+  // };
 
   updateComments = comments => {
     this.setState({ comments });
@@ -105,11 +143,12 @@ class SinglePost extends Component {
           <HeaderH1>{post.title}</HeaderH1>
           <Author>
             <PosterName>
-              Posted by <Link to={`${posterId}`}>{posterName} </Link>
+              Posted by <Link to={`${posterId}`}>{posterName}</Link>
             </PosterName>
             <RightPost>
               <span className="poster-date">
-                on {new Date(post.created).toDateString()}
+                <i className="fa fa-calendar"></i>{" "}
+                {new Date(post.created).toDateString()}
               </span>
             </RightPost>
           </Author>
@@ -174,7 +213,13 @@ class SinglePost extends Component {
   };
 
   render() {
-    const { post, redirectToHome, redirectToSignin, comments } = this.state;
+    const {
+      post,
+      redirectToHome,
+      redirectToSignin,
+      comments,
+      relatedPost
+    } = this.state;
 
     if (redirectToHome) {
       return <Redirect to={`/`} />;
@@ -195,6 +240,18 @@ class SinglePost extends Component {
                 comments={comments.reverse()}
                 updateComments={this.updateComments}
               />
+              <RelatedPostWrapper>
+                <div>
+                  <RelatedTitle>
+                    <h2>Related Posts</h2>
+                  </RelatedTitle>
+                  <div className="relatedCardWrapper">
+                    {relatedPost.map((post, i) => (
+                      <Card key={i} post={post} />
+                    ))}
+                  </div>
+                </div>
+              </RelatedPostWrapper>
             </div>
           )}
         </div>
@@ -206,7 +263,7 @@ class SinglePost extends Component {
 export default SinglePost;
 
 const Wrapper = styled("div")`
-  margin-top: 5rem;
+  padding-top: 5rem;
   margin-bottom: 5rem;
 `;
 const PostWrapper = styled("div")`
@@ -324,4 +381,19 @@ const BtnThrashAdmin = styled("button")`
   background-color: #c32d0e;
   border-radius: 5px;
   border-color: transparent;
+`;
+const RelatedPostWrapper = styled("div")`
+  border-radius: 5px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  padding: 0.5rem 1rem 1rem 1rem;
+  margin: 0 auto;
+  max-width: 54rem;
+  position: relative;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+`;
+const RelatedTitle = styled("div")`
+  text-align: center;
+  padding: 20px;
 `;
