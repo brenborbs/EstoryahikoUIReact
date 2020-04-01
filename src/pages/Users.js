@@ -49,7 +49,8 @@ class FindPeople extends Component {
                   <span className="profile-card-loc__icon"></span>
 
                   <span className="profile-card-loc__txt">
-                    {`Joined ${new Date(user.created).toDateString()}`}
+                    <i className="fa fa-calendar"></i>{" "}
+                    {`${new Date(user.created).toDateString()}`}
                   </span>
                 </div>
               </div>

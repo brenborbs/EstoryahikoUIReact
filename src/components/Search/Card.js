@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import renderHTML from "react-render-html";
+// import renderHTML from "react-render-html";
 import moment from "moment";
 import styled from "@emotion/styled";
 import DefaultImage from "../../images/milind-kaduskar-87655-unsplash.jpg";

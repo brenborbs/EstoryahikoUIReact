@@ -756,26 +756,173 @@ hr {
 /* =============
 USER PROFILE PAGE
 ================*/
+.userprofile-wrapper {
+  padding-top: 60px;
+  padding-bottom: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+@media (min-width: 768px) {
+  .userprofile-wrapper {
+    padding-top: 80px;
+    padding-bottom: 72px;
+    max-width: 1320px;
+  }
+}
+
+.userprofile-first {
+  padding: 12px;
+}
+.userprofile-second {
+  margin-bottom: -16px;
+  margin-left: -24px;
+}
+@media (min-width: 768px) {
+  .userprofile-second {
+    display: flex;
+  }
+}
+.userprofile-left {
+  padding-bottom: 16px;
+  padding-left: 24px;
+}
+@media (min-width: 768px) {
+  .userprofile-left {
+    display: flex;
+    width: 33.33333%;
+  }
+}
+.userprofile-right {
+  padding-bottom: 16px;
+  padding-left: 24px;
+}
+@media (min-width: 768px) {
+  .userprofile-right {
+    width: 66.66667%;
+  }
+}
+.leftprofirst {
+  position: relative;
+}
+@media (min-width: 768px) {
+  .leftprofirst {
+    margin-left: auto;
+    margin-right: 32px;
+  }
+}
+
+.rightprofirst {
+  margin-bottom: -16px;
+  margin-left: 0px;
+}
+.colright {
+  padding-bottom: 16px;
+  padding-left: 0px;
+}
+
+@media (min-width: 480px) {
+  .colrightfirst {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: -24px;
+    margin-left: -24px;
+  }
+}
+.username {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+@media (min-width: 480px) {
+  .username {
+    padding-bottom: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .username {
+    font-size: 40px;
+  }
+}
+@media (min-width: 480px) {
+  .controlbuttons {
+    padding-bottom: 24px;
+    padding-left: 24px;
+  }
+}
+.controlbtnwrapper {
+  margin-bottom: -8px;
+  margin-left: -8px;
+  display: flex;
+  align-items: center;
+}
+
+.contbtn {
+  padding-bottom: 8px;
+  padding-left: 8px;
+}
+.profdetails {
+  line-height: 1.4;
+  margin-bottom: -16px;
+  margin-left: -16px;
+}
+.ing {
+  padding-bottom: 16px;
+  padding-left: 16px;
+}
+.joinfir {
+  word-break: break-all;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -8px;
+  margin-left: -24px;
+}
+.joinsec {
+  padding-bottom: 8px;
+  padding-left: 24px;
+  min-width: 0px;
+}
+.ofi {
+  color: #767676;
+}
+.profabout {
+  overflow-wrap: break-word;
+}
+.profemail {
+  color: rgb(118, 118, 118);
+  line-height: 1.4;
+}
+
 .btn-profile {
   color: white;
   border-radius: 5px;
   padding: 8px;
   margin-right: 10px;
+  font-size: 14px;
 }
 .add-post {
-  background-color: grey;
+  background-color: #007fff;
 }
 .edit-profile {
-  background-color: #9649ff;
+  background-color: var(--mainBlack);
+  margin-right: 8px;
 }
 
 .profile-tab-container {
   padding: 20px;
 }
 .profile-row {
-  display: grid;
-  grid-template-columns: 2fr 2fr 3fr;
-  grid-column-gap: 2rem;
+  display: block;
+}
+@media screen and (min-width: 728px) {
+  .profile-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr;
+    grid-column-gap: 2rem;
+  }
 }
 .tab-followers span {
   position: absolute;
@@ -874,3 +1021,6 @@ FIND PEOPLE
   border-bottom-width: 1px;
   border-color: rgba(0, 0, 0, 0.2);
 }
+/* ============= 
+  USERPROfILE
+===============*/

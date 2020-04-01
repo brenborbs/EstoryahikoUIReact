@@ -196,9 +196,9 @@ const Button = styled("button")`
   padding: 0.25rem 0.5rem;
   font-size: 12px;
   border-radius: 999px;
-  color: #6a51b2;
-  border-color: #6a51b2;
-  background-color: #ddd5f0;
+  color: white;
+  border-color: transparent;
+  background-color: #4267b2;
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -206,8 +206,7 @@ const Button = styled("button")`
   text-transform: uppercase;
 
   :hover {
-    background-color: #af9cda;
-    color: #6a51b2;
+    background-color: #6699cc;
   }
 `;
 const Span = styled("span")`

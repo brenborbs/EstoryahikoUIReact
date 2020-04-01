@@ -51,7 +51,7 @@ export default DeleteUser;
 
 const BtnThrash = styled("button")`
   padding: 8px;
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
   color: white;
   background-color: #c32d0e;

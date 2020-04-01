@@ -90,133 +90,113 @@ export default class UserProfile extends Component {
       : DefaultProfile;
 
     return (
-      <div className="user-profile-container">
-        <Wrapper>
-          <Banner>
-            <Column>
-              <ControlButtons>
-                <FollowButton>
-                  <span>
-                    {isAuthenticated().user &&
-                    isAuthenticated().user._id === user._id ? (
-                      <>
-                        <Link className="btn-profile add-post" to={`/newPost`}>
-                          New Post
-                        </Link>
-
-                        <Link
-                          className="btn-profile edit-profile"
-                          to={`/user/edit/${user._id}`}
-                        >
-                          Edit Profile
-                        </Link>
-                        <DeleteUser userId={user._id} />
-                      </>
-                    ) : (
-                      <FollowProfileButton
-                        following={this.state.following}
-                        onButtonClick={this.clickFollowButton}
+      <>
+        <div className="userprofile-wrapper">
+          <div className="userprofile-first">
+            <div>
+              <div className="userprofile-second">
+                <div className="userprofile-left">
+                  <div className="leftprofirst">
+                    <ImageWrapper>
+                      <Userpic
+                        onError={i => (i.target.src = `${DefaultProfile}`)}
+                        alt={user.name}
+                        src={photoUrl}
                       />
-                    )}
-                  </span>
-                </FollowButton>
-              </ControlButtons>
-              <UserH1>
-                {" "}
-                <Userpic
-                  onError={i => (i.target.src = `${DefaultProfile}`)}
-                  alt={user.name}
-                  src={photoUrl}
-                />{" "}
-                {user.name}
-              </UserH1>
-              <div>
-                <UserBio>{user.about}</UserBio>
-                {/* <div className="UserProfile__stats">
-                  <span>23 followers</span>
-                  <span>3 following</span>
-                  <span>12 posts</span>
-                </div> */}
-                <UserInfo>
-                  <InfoSpan>
-                    {" "}
-                    {`Joined ${new Date(user.created).toDateString()}`}
-                  </InfoSpan>
-                  <InfoSpan>{user.email}</InfoSpan>
-                </UserInfo>
+                    </ImageWrapper>
+                  </div>
+                </div>
+                <div className="userprofile-right">
+                  <div className="rightprofirst">
+                    <div className="colright">
+                      <div className="colrightfirst">
+                        <div className="username">{user.name}</div>
+                        <div className="controlbuttons">
+                          <div className="controlbtnwrapper">
+                            {isAuthenticated().user &&
+                            isAuthenticated().user._id === user._id ? (
+                              <>
+                                {/* <div className="contbtn">
+                                  <Link
+                                    className="btn-profile add-post"
+                                    to={`/newPost`}
+                                  >
+                                    New Post
+                                  </Link>
+                                </div> */}
+                                <div className="contbtn">
+                                  <Link
+                                    className="btn-profile edit-profile"
+                                    to={`/user/edit/${user._id}`}
+                                  >
+                                    Edit Profile
+                                  </Link>
+                                  <DeleteUser userId={user._id} />
+                                </div>
+                              </>
+                            ) : (
+                              <div className="contbtn">
+                                <FollowProfileButton
+                                  following={this.state.following}
+                                  onButtonClick={this.clickFollowButton}
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="colright">
+                      <div className="profdetails">
+                        <div className="datejoined ing">
+                          <div className="joinfir">
+                            <div className="joinsec">
+                              <i className="fa fa-calendar ofi"></i>{" "}
+                              {`Joined ${new Date(
+                                user.created
+                              ).toDateString()}`}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="profabout ing">{user.about}</div>
+                        <div className="profemail ing">{user.email}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </Column>
-          </Banner>
-          {/* Posts Profile Tabs */}
-          <ProfileBottom>
-            <ProfileTabs
-              followers={user.followers}
-              following={user.following}
-              posts={posts}
-            />
-          </ProfileBottom>
-        </Wrapper>
-      </div>
+            </div>
+          </div>
+        </div>
+        {/* Posts Profile Tabs */}
+        <ProfileBottom>
+          <ProfileTabs
+            followers={user.followers}
+            following={user.following}
+            posts={posts}
+          />
+        </ProfileBottom>
+      </>
     );
   }
 }
 
-const Wrapper = styled("div")`
-padding-top: 2rem;
-}
-`;
-const Banner = styled("div")`
-  max-width: none;
-  text-align: center;
-  color: #fefefe;
-  margin-right: auto;
-  margin-left: auto;
-`;
-const Column = styled("div")`
-  background: #283336;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  text-shadow: 1px 1px 2px black;
-  min-height: 40vh;
-`;
-const ControlButtons = styled("div")`
+const ImageWrapper = styled("div")`
   position: relative;
-`;
-const FollowButton = styled("div")`
-  position: absolute;
-  top: 40px;
-  right: 20px;
-`;
-const Userpic = styled("img")`
-  margin-right: 0.75rem;
-  vertical-align: middle;
   display: inline-block;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+  line-height: 1;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  overflow: hidden;
+  vertical-align: middle;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 150px;
+  height: 150px;
 `;
-const UserH1 = styled("h1")`
-  padding-top: 80px;
-  font-weight: 600;
-  font-size: 1.84524rem;
-`;
-const UserBio = styled("p")`
-  margin: -0.4rem auto 0.5rem;
-  font-size: 95%;
-  max-width: 420px;
-  line-height: 1.4;
-  padding-top: 20px;
-`;
-const UserInfo = styled("p")`
-  font-size: 90%;
-  margin-bottom: 1rem;
-`;
-const InfoSpan = styled("span")`
-  margin-right: 20px;
+
+const Userpic = styled("img")`
+  height: 150px;
+  vertical-align: unset;
+  width: 100%;
 `;
 const ProfileBottom = styled("div")`
   max-width: 75rem;
