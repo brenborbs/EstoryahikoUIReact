@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "emotion-media-query": "^1.0.1",
     "emotion-theming": "^10.0.27",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "query-string": "^6.11.1",
     "react": "^16.12.0",
